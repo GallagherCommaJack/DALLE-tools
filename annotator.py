@@ -176,7 +176,9 @@ for i, d in enumerate(dl):
                                 labelbottom=False)
                             f.canvas.draw()
                         c += 1
-                plt.suptitle('Annotator v1.0 - Page {} - Image {} out of {} ({:.2f}%) - {} {:.2f}% - Remaining {}'.format(i, total_pages, i*bs, total, 100*i*bs/total, current_key, annotations_length_percent, time.strftime("%H:%M:%S", time.gmtime(remaining_time))))
+                timestr = time.strftime("%H:%M:%S", time.gmtime(remaining_time))
+                suptitle=f'Annotator v1.0 - Page {i} - Image {total_pages} out of {i*bs} ({100*i*bs/total:.2f}% - {current_key} {annotations_length_percent:.2f}%) - Remaining {timestr}'
+                plt.suptitle(suptitle)
                 f.canvas.draw()
 
         f.canvas.mpl_connect('button_press_event', onclick)
